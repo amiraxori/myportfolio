@@ -1,0 +1,72 @@
+name: amir-shrestha-portfolio
+region: blr  # Bangalore — closest to Nepal. Options: nyc, sfo, lon, fra, sgp, blr, syd
+
+services:
+  - name: web
+    source_dir: /
+    github:
+      repo: amiryogi/myportfolio   # ← update to your GitHub repo (owner/repo)
+      branch: main
+      deploy_on_push: true
+    build_command: npm ci && npm run build
+    run_command: node .next/standalone/server.js
+    environment_slug: node-js
+    instance_size_slug: apps-s-1vcpu-0.5gb   # cheapest tier — upgrade if needed
+    instance_count: 1
+    http_port: 3000
+    routes:
+      - path: /
+    envs:
+      # ── Runtime secrets — set values in the App Platform dashboard ──────────
+      - key: MONGODB_URI
+        scope: RUN_TIME
+        type: SECRET
+      - key: JWT_SECRET
+        scope: RUN_TIME
+        type: SECRET
+      - key: JWT_ACCESS_SECRET
+        scope: RUN_TIME
+        type: SECRET
+      - key: JWT_REFRESH_SECRET
+        scope: RUN_TIME
+        type: SECRET
+      - key: ADMIN_EMAIL
+        scope: RUN_TIME
+        type: SECRET
+      - key: ADMIN_PASSWORD
+        scope: RUN_TIME
+        type: SECRET
+      - key: CLOUDINARY_NAME
+        scope: RUN_TIME
+        type: SECRET
+      - key: CLOUDINARY_API_KEY
+        scope: RUN_TIME
+        type: SECRET
+      - key: CLOUDINARY_API_SECRET
+        scope: RUN_TIME
+        type: SECRET
+      - key: RESEND_API_KEY
+        scope: RUN_TIME
+        type: SECRET
+      - key: PUSHER_APP_ID
+        scope: RUN_TIME
+        type: SECRET
+      - key: PUSHER_KEY
+        scope: RUN_TIME
+        type: SECRET
+      - key: PUSHER_SECRET
+        scope: RUN_TIME
+        type: SECRET
+      - key: PUSHER_CLUSTER
+        scope: RUN_TIME
+        type: SECRET
+      # ── Public vars — safe to commit values ─────────────────────────────────
+      - key: NEXT_PUBLIC_PUSHER_KEY
+        scope: BUILD_TIME
+        value: ""   # ← paste your Pusher key here
+      - key: NEXT_PUBLIC_PUSHER_CLUSTER
+        scope: BUILD_TIME
+        value: ap2
+      - key: NODE_ENV
+        scope: RUN_TIME
+        value: production

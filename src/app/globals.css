@@ -1,0 +1,111 @@
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+/* ─── Blue Theme Palette ─────────────────────────────────────────────── */
+:root {
+  --background: #f0f4ff;
+  --foreground: #0d1b3e;
+}
+
+.dark {
+  --background: #070d1f;
+  --foreground: #c8d8f5;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+
+  /* Override neutral → blue-slate shades */
+  --color-neutral-50:  #f0f4ff;
+  --color-neutral-100: #e2eaff;
+  --color-neutral-200: #c5d2f9;
+  --color-neutral-300: #a0b3ef;
+  --color-neutral-400: #7390e0;
+  --color-neutral-500: #506ccc;
+  --color-neutral-600: #3a52b4;
+  --color-neutral-700: #293c96;
+  --color-neutral-800: #1b2a72;
+  --color-neutral-900: #101b4f;
+  --color-neutral-950: #080e2e;
+
+  /* Override black → deep navy, white → cool blue-white */
+  --color-black: #0d1b3e;
+  --color-white: #f0f4ff;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Tiptap / Typography Styles */
+.prose pre {
+  background-color: #1e1e1e;
+  color: #d4d4d4;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  overflow-x: auto;
+}
+
+.prose code {
+  background-color: rgba(0, 0, 0, 0.05);
+  padding: 0.2rem 0.4rem;
+  border-radius: 0.25rem;
+  font-size: 0.875em;
+}
+
+.dark .prose code {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.prose pre code {
+  background-color: transparent;
+  padding: 0;
+}
+
+/* Syntax Highlighting */
+.hljs-comment,
+.hljs-quote {
+  color: #6a9955;
+}
+
+.hljs-keyword,
+.hljs-selector-tag,
+.hljs-literal,
+.hljs-section,
+.hljs-link {
+  color: #569cd6;
+}
+
+.hljs-function,
+.hljs-variable,
+.hljs-template-variable,
+.hljs-string,
+.hljs-type,
+.hljs-built_in,
+.hljs-attr {
+  color: #ce9178;
+}
+
+.hljs-number,
+.hljs-symbol,
+.hljs-bullet {
+  color: #b5cea8;
+}
+
+.hljs-title,
+.hljs-params {
+  color: #dcdcaa;
+}
+
+.hljs-emphasis {
+  font-style: italic;
+}
+
+.hljs-strong {
+  font-weight: bold;
+}
