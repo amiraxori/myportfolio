@@ -5,11 +5,12 @@ import { blogPostSchema } from '@/lib/validation/schemas';
 
 export async function GET(
   request: Request,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
     await dbConnect();
-    const post = await BlogPost.findById(params.id);
+    const { id } = await params;
+    const post = await BlogPost.findById(id);
     if (!post) {
       return NextResponse.json({ error: 'Post not found' }, { status: 404 });
     }
@@ -21,14 +22,15 @@ export async function GET(
 
 export async function PATCH(
   request: Request,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
+    const { id } = await params;
     const body = await request.json();
     const validatedData = blogPostSchema.partial().parse(body);
 
     await dbConnect();
-    const post = await BlogPost.findByIdAndUpdate(params.id, validatedData, {
+    const post = await BlogPost.findByIdAndUpdate(id, validatedData, {
       new: true,
       runValidators: true,
     });
@@ -45,11 +47,12 @@ export async function PATCH(
 
 export async function DELETE(
   request: Request,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
+    const { id } = await params;
     await dbConnect();
-    const post = await BlogPost.findByIdAndDelete(params.id);
+    const post = await BlogPost.findByIdAndDelete(id);
     if (!post) {
       return NextResponse.json({ error: 'Post not found' }, { status: 404 });
     }
