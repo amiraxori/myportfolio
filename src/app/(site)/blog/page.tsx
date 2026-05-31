@@ -3,7 +3,7 @@ import dbConnect from '@/lib/db';
 import BlogPost from '@/models/BlogPost';
 import Image from 'next/image';
 
-export const revalidate = 3600; // revalidate every hour
+export const dynamic = 'force-dynamic';
 
 async function getPosts() {
   await dbConnect();
