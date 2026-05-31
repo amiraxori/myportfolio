@@ -1,7 +1,3 @@
-import { Resend } from 'resend';
-
-const resend = new Resend(process.env.RESEND_API_KEY);
-
 export interface LeadEmailData {
   name: string;
   email: string;
@@ -11,10 +7,14 @@ export interface LeadEmailData {
 }
 
 export async function sendLeadEmail(lead: LeadEmailData) {
-  if (!process.env.RESEND_API_KEY) {
+  const apiKey = process.env.RESEND_API_KEY?.trim();
+  if (!apiKey || !apiKey.startsWith('re_')) {
     console.warn('RESEND_API_KEY not set. Skipping email.');
     return;
   }
+
+  const { Resend } = await import('resend');
+  const resend = new Resend(apiKey);
 
   try {
     await resend.emails.send({
