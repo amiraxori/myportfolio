@@ -63,7 +63,7 @@ services:
       # ── Public vars — safe to commit values ─────────────────────────────────
       - key: NEXT_PUBLIC_PUSHER_KEY
         scope: BUILD_TIME
-        value: ""   # ← paste your Pusher key here
+        value: "e545053e9081651bcc54"   # ← paste your Pusher key here
       - key: NEXT_PUBLIC_PUSHER_CLUSTER
         scope: BUILD_TIME
         value: ap2
