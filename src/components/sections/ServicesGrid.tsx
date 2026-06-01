@@ -41,7 +41,7 @@ export default async function ServicesGrid() {
               <ServiceCard
                 name="E-commerce"
                 tagline="Scalable online storefronts"
-                price="450,000"
+                price="45,000"
                 deliverables={['Custom Shopping Cart', 'Admin Dashboard', 'Product Management', 'High Performance']}
                 timeline="8-12 Weeks"
               />
@@ -92,7 +92,7 @@ export default async function ServicesGrid() {
                 <ServiceCard
                   name="E-commerce"
                   tagline="Scalable online storefronts"
-                  price="450,000"
+                  price="45,000"
                   deliverables={['Custom Shopping Cart', 'Admin Dashboard', 'Product Management', 'High Performance']}
                   timeline="8-12 Weeks"
                 />
