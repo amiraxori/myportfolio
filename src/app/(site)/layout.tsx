@@ -2,6 +2,7 @@ import Link from 'next/link';
 import MobileNav from '@/components/sections/MobileNav';
 import { ThemeToggle } from '@/components/ThemeToggle';
 import ChatWidget from '@/components/ChatWidget';
+import PromoModal from '@/components/PromoModal';
 
 export default function SiteLayout({
   children,
@@ -34,6 +35,7 @@ export default function SiteLayout({
         {children}
       </div>
       <ChatWidget />
+      <PromoModal />
     </div>
   );
 }
